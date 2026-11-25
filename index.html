@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080F20">
+    <title>DOMPETKU - Finance Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+</head>
+<body>
+
+    <main class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">🌌</div>
+                <h1>DOMPET<span>KU</span></h1>
+            </div>
+            <span class="header-date" id="currentDate"></span>
+        </header>
+
+        <!-- TAMPILAN BERANDA -->
+        <div id="homeView">
+            <!-- GREETING -->
+            <section class="greeting">
+                <h2>Halo, Dimas! 👋</h2>
+                <p>Yuk, atur keuanganmu hari ini.</p>
+            </section>
+
+            <!-- SALDO -->
+            <section class="balance-card">
+                <p class="balance-label">Total Saldo</p>
+                <h1 class="balance-amount" id="balanceAmount">Rp0</h1>
+                <div class="balance-footer">
+                    <span>Keuangan pribadimu</span>
+                    <span>● Aktif</span>
+                </div>
+            </section>
+
+            <!-- RINGKASAN -->
+            <section class="summary">
+                <div class="summary-card">
+                    <div class="summary-icon">📈</div>
+                    <p>Total Pemasukan</p>
+                    <h3 class="income" id="totalIncome">Rp0</h3>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-icon">📉</div>
+                    <p>Total Pengeluaran</p>
+                    <h3 class="expense" id="totalExpense">Rp0</h3>
+                </div>
+            </section>
+
+            <!-- RINGKASAN PER KATEGORI -->
+            <section class="section" id="categorySummarySection">
+                <div class="section-header">
+                    <h3>Pengeluaran per Kategori</h3>
+                </div>
+                <div class="category-summary-list" id="categorySummaryList">
+                    <div class="transaction-item">
+                        <p class="text-muted">Belum ada pengeluaran.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MENU UTAMA -->
+            <section class="section">
+                <div class="section-header">
+                    <h3>Menu Keuangan</h3>
+                </div>
+
+                <div class="menu-grid">
+                    <div class="menu-item" data-action="income">
+                        <div class="icon">💰</div>
+                        <p>Pemasukan</p>
+                    </div>
+
+                    <div class="menu-item" data-action="expense">
+                        <div class="icon">💸</div>
+                        <p>Pengeluaran</p>
+                    </div>
+
+                    <div class="menu-item" id="btnTabungan">
+                        <div class="icon">🎯</div>
+                        <p>Isi Tabungan</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- TARGET TABUNGAN -->
+        <section class="section" id="savingsSection">
+            <div class="savings-card">
+                <div class="savings-info">
+                    <h4>🎯 Target: Laptop Impian</h4>
+                    <p>Klik menu "Isi Tabungan" untuk menambah dana.</p>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="savingsProgress" style="width: 0%;"></div>
+                </div>
+
+                <div class="balance-footer">
+                    <span id="savedAmountText">Rp0 terkumpul</span>
+                    <span>Target: Rp15.000.000</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- RIWAYAT TRANSAKSI -->
+        <section class="section" id="transactionSection">
+            <div class="section-header">
+                <h3>Transaksi Terakhir</h3>
+                <select id="filterCategory" class="filter-select" aria-label="Filter kategori transaksi">
+                    <option value="ALL">Semua Kategori</option>
+                    <option value="Pekerjaan">Pekerjaan</option>
+                    <option value="Makanan">Makanan</option>
+                    <option value="Transportasi">Transportasi</option>
+                    <option value="Belanja">Belanja</option>
+                    <option value="Tagihan">Tagihan</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+            </div>
+
+            <div class="transaction-list" id="transactionList">
+                <div class="transaction-item">
+                    <p class="text-muted">Belum ada transaksi.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL TRANSAKSI -->
+    <div class="modal" id="transactionModal">
+        <div class="modal-content">
+            <h3 id="modalTitle" style="margin-bottom: 16px;">Tambah Transaksi</h3>
+
+            <form id="transactionForm" class="modal-form">
+                <div class="form-group">
+                    <label for="description">Nama Transaksi</label>
+                    <input type="text" id="description" placeholder="Contoh: Hasil ShopeeFood" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Nominal (Rupiah)</label>
+                    <input type="number" id="amount" placeholder="Contoh: 50000" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Kategori</label>
+                    <select id="category" required>
+                        <option value="">Pilih kategori</option>
+                        <option value="Pekerjaan">Pekerjaan</option>
+                        <option value="Makanan">Makanan</option>
+                        <option value="Transportasi">Transportasi</option>
+                        <option value="Belanja">Belanja</option>
+                        <option value="Tagihan">Tagihan</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width:100%;">Simpan Transaksi</button>
+                <button type="button" class="btn-secondary" id="closeModal" style="width:100%;">Batal</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL TABUNGAN -->
+    <div class="modal" id="savingsModal">
+        <div class="modal-content">
+            <h3 style="margin-bottom: 16px;">Tambah Tabungan Laptop</h3>
+            <form id="savingsForm" class="modal-form">
+                <div class="form-group">
+                    <label for="savingsInput">Nominal Tabungan (Rupiah)</label>
+                    <input type="number" id="savingsInput" placeholder="Contoh: 100000" min="1" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%;">Simpan Tabungan</button>
+                <button type="button" class="btn-secondary" id="withdrawSavingsBtn" style="width:100%;">Tarik ke Saldo</button>
+                <button type="button" class="btn-secondary" id="closeSavingsModal" style="width:100%;">Batal</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- NAVIGASI BAWAH -->
+    <nav class="bottom-nav">
+        <button type="button" class="nav-item active" data-nav="home">
+            <span class="nav-icon">🏠</span>
+            <span>Beranda</span>
+        </button>
+
+        <button type="button" class="nav-item" data-nav="transactions">
+            <span class="nav-icon">💰</span>
+            <span>Transaksi</span>
+        </button>
+
+        <button type="button" class="nav-item" data-nav="savings">
+            <span class="nav-icon">🎯</span>
+            <span>Tabungan</span>
+        </button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>

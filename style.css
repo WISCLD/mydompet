@@ -1,0 +1,619 @@
+/* =====================================
+   DOMPETKU - COSMIC BLUE FINANCE APP
+   Main Stylesheet
+===================================== */
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --bg: #080F20;
+    --bg-light: #101B35;
+    --card: #142442;
+    --card-light: #1B3154;
+
+    --blue: #1677E8;
+    --cyan: #28C7F5;
+    --neon: #69D5FF;
+
+    --white: #FFFFFF;
+    --text: #DCE8FA;
+    --muted: #8FA5C5;
+
+    --green: #36D99A;
+    --red: #FF647C;
+
+    --border: rgba(126, 177, 255, 0.13);
+}
+
+/* BODY */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background:
+        radial-gradient(
+            circle at 85% 5%,
+            rgba(22, 119, 232, 0.23),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 5% 70%,
+            rgba(40, 199, 245, 0.10),
+            transparent 35%
+        ),
+        var(--bg);
+
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* MAIN CONTAINER */
+.container {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    margin: auto;
+    padding: 24px 18px 110px;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        var(--blue),
+        var(--cyan)
+    );
+
+    box-shadow: 0 0 22px rgba(40, 199, 245, 0.25);
+    font-size: 22px;
+}
+
+.logo h1 {
+    font-size: 21px;
+    letter-spacing: 1px;
+    color: var(--white);
+}
+
+.logo span {
+    color: var(--cyan);
+}
+
+.header-date {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* GREETING */
+.greeting {
+    margin-bottom: 22px;
+}
+
+.greeting h2 {
+    font-size: 23px;
+    margin-bottom: 7px;
+}
+
+.greeting p {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* BALANCE CARD */
+.balance-card {
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #1454A2,
+        #12356B,
+        #102849
+    );
+
+    padding: 24px;
+    border-radius: 23px;
+
+    border: 1px solid rgba(105, 213, 255, 0.25);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25),
+        0 0 30px rgba(22, 119, 232, 0.12);
+
+    margin-bottom: 20px;
+}
+
+.balance-card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -70px;
+    top: -80px;
+
+    background: rgba(105, 213, 255, 0.17);
+    border-radius: 50%;
+    filter: blur(10px);
+}
+
+.balance-label {
+    font-size: 12px;
+    color: #B9D9FF;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.balance-amount {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 22px;
+}
+
+.balance-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.balance-footer span {
+    font-size: 11px;
+    color: #C6DBF7;
+}
+
+/* SUMMARY */
+.summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+    margin-bottom: 28px;
+}
+
+.summary-card {
+    background: var(--card);
+    padding: 17px;
+    border-radius: 17px;
+    border: 1px solid var(--border);
+}
+
+.summary-icon {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.summary-card p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 7px;
+}
+
+.summary-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.income {
+    color: var(--green);
+}
+
+.expense {
+    color: var(--red);
+}
+
+/* SECTION */
+.section {
+    margin-bottom: 27px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-header h3 {
+    font-size: 16px;
+}
+
+.section-header a {
+    color: var(--cyan);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+/* QUICK MENU */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.menu-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+
+    padding: 18px 8px;
+    text-align: center;
+
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.menu-item:active {
+    transform: scale(0.95);
+    background: var(--card-light);
+}
+
+.menu-item .icon {
+    font-size: 24px;
+    margin-bottom: 9px;
+}
+
+.menu-item p {
+    font-size: 11px;
+    color: var(--text);
+}
+
+/* TRANSACTION LIST */
+.transaction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--card);
+    padding: 14px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.transaction-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.transaction-details strong {
+    font-size: 13px;
+}
+
+.transaction-details small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.transaction-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.delete-transaction {
+    background: rgba(255, 100, 124, 0.15);
+    color: var(--red);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.delete-transaction:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+/* SAVINGS CARD */
+.savings-card {
+    background: linear-gradient(
+        135deg,
+        #142E55,
+        #10213D
+    );
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 19px;
+}
+
+.savings-card h4 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.savings-card p {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.progress-bar {
+    height: 8px;
+    background: #263B5D;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px 0 9px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(
+        90deg,
+        var(--blue),
+        var(--cyan)
+    );
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+/* BUTTON */
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: linear-gradient(
+        135deg,
+        var(--blue),
+        var(--cyan)
+    );
+
+    color: white;
+    padding: 14px 20px;
+    border-radius: 13px;
+    font-weight: 700;
+    font-size: 13px;
+
+    box-shadow: 0 5px 18px rgba(22, 119, 232, 0.2);
+}
+
+.btn-secondary {
+    background: var(--card-light);
+    color: var(--neon);
+    padding: 13px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+/* INPUT & MODAL FORM */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+input, select, textarea {
+    width: 100%;
+    background: var(--card);
+    color: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    padding: 14px;
+    font-size: 14px;
+    font-family: inherit;
+
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(40, 199, 245, 0.10);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--muted);
+}
+
+/* BOTTOM NAVIGATION */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
+    max-width: 480px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 13px 8px calc(13px + env(safe-area-inset-bottom));
+
+    background: rgba(12, 24, 46, 0.95);
+    backdrop-filter: blur(18px);
+
+    border-top: 1px solid var(--border);
+    z-index: 100;
+}
+
+.bottom-nav .nav-item {
+    background: transparent;
+    border: none;
+    padding: 4px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    color: var(--muted);
+    font-size: 10px;
+    text-decoration: none;
+}
+
+.nav-item .nav-icon {
+    font-size: 20px;
+}
+
+.nav-item.active {
+    color: var(--cyan);
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    z-index: 200;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 420px;
+
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 23px;
+}
+
+/* UTILITIES */
+.text-muted {
+    color: var(--muted);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+/* RESPONSIVE */
+@media (max-width: 360px) {
+    .container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .balance-amount {
+        font-size: 27px;
+    }
+
+    .menu-grid {
+        gap: 8px;
+    }
+
+    .menu-item p {
+        font-size: 10px;
+    }
+}
+
+/* FILTER KATEGORI */
+.filter-select {
+    width: auto;
+    min-width: 135px;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 10px;
+}
+
+/* RINGKASAN PER KATEGORI */
+.category-summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.category-summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card);
+    padding: 13px 15px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    font-size: 13px;
+}
+
+.category-summary-item span {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.category-summary-item strong {
+    color: var(--red);
+}
